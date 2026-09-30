@@ -1,25 +1,35 @@
-# Repository Guidelines
+﻿# Repository Guidelines
 
-## Project Structure & Module Organization
+## Project Context & Current Phase
 
-This workspace currently contains no application code, tests, assets, or build configuration. Establish a clear layout when adding the first implementation. Prefer `src/` for application code, `tests/` for automated tests, `docs/` for supporting documentation, and `assets/` for static resources where appropriate. Organize related functionality together and document the chosen architecture in `README.md`.
+This project is a multi-tenant SaaS Delivery Order Management System for delivery companies. The user is the backend developer. Work is limited to planning and requirements analysis; do not implement features, scaffold the application, or install dependencies yet.
 
-## Build, Test, and Development Commands
+Business requirements are not finalized. Do not invent roles, workflows, order statuses, permissions, or release scope. The next step is an Intent-phase stakeholder interview. Distinguish confirmed requirements, assumptions, and open questions.
 
-No build, test, or local development commands are configured yet. When introducing a toolchain, document exact installation, development, build, and test commands in `README.md`. Keep these commands synchronized with the actual scripts or configuration. Do not assume commands such as `npm test` exist before the corresponding tooling is added.
+## Technology Stack
 
-## Coding Style & Naming Conventions
+Use Python, FastAPI, Pydantic, PostgreSQL, Alembic for migrations, and Pytest for testing. Expose a REST API. Versions, dependency management, and synchronous versus asynchronous database access remain undecided. Avoid unnecessary dependencies or architectural patterns.
 
-Follow the standard conventions of the language selected for the project. Use consistent indentation within each file and descriptive names for modules, functions, and variables. Prefer small modules with clear responsibilities. Add an appropriate formatter and linter alongside the initial implementation, and document their invocation. Avoid mixing formatting-only changes with functional changes.
+## Architecture Principles
 
-## Testing Guidelines
+- Keep API route handlers thin; business logic must not live in routes.
+- Use a service layer for application and business logic.
+- Apply Fat Models, Thin Controllers where appropriate: models may encapsulate domain behavior, while services coordinate application operations.
+- Separate database access from HTTP concerns; do not couple persistence logic to request or response handling.
+- Use Pydantic schemas for request and response validation.
+- Use FastAPI dependencies for dependency injection where appropriate.
+- Maintain clear separation of concerns and prefer modular, maintainable code over premature complexity.
 
-No testing framework or coverage threshold is currently defined. Introduce tests with new functionality and regression tests for bug fixes. Use descriptive test names that identify the behavior and expected result. Keep tests deterministic, isolate external dependencies, and document how to run the suite.
+Present proposed changes or a diff before making major architectural decisions, including module layout, tenancy storage, authentication, or transaction strategy. These principles do not approve a specific design.
 
-## Commit & Pull Request Guidelines
+## Repository Structure & Commands
 
-No Git metadata is available, so existing commit conventions cannot be verified. Use concise, imperative commit subjects, such as `Add delivery status validation`. Keep each commit focused. Pull requests should explain the change, link relevant issues, and report validation performed or why it was not run. Include screenshots for visible interface changes.
+`AGENTS.md` holds contributor instructions; `README.md` records project context. Empty `app/` and `test/` directories exist, but the module layout is not finalized. No application, dependency manifest, migration setup, or runnable development/test commands exist yet. Document verified commands when implementation begins.
 
-## Security & Configuration
+## Coding & Testing Conventions
 
-Never commit credentials, tokens, or private customer data. Document required configuration using placeholder values, and exclude local secrets and generated artifacts through `.gitignore` when introducing them.
+Use four-space Python indentation, `snake_case` for modules/functions, and `PascalCase` for classes. Prefer descriptive names and type annotations. No formatter or linter has been selected. When implementation is authorized, use Pytest with `test_*.py` files and `test_*` functions. Cover confirmed business rules and regressions; no coverage threshold is defined.
+
+## Contributions & Security
+
+Git history contains only `Initial commit`; no established commit convention exists. Use concise, imperative subjects. Pull requests should explain changes, validation, and unresolved assumptions, linking relevant issues. Never commit credentials or private customer data.
