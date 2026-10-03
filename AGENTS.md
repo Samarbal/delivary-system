@@ -2,13 +2,13 @@
 
 ## Project Context & Current Phase
 
-This project is a multi-tenant SaaS Delivery Order Management System for delivery companies. The user is the backend developer. Work is limited to planning and requirements analysis; do not implement features, scaffold the application, or install dependencies yet.
+This project is a Delivery Order Management System for one delivery company. The five-week target is a working demonstration by a solo developer with AI assistance. Multi-tenancy is outside the current scope. Work is limited to planning and requirements analysis; do not implement features, scaffold the application, or install dependencies yet.
 
-Business requirements are not finalized. Do not invent roles, workflows, order statuses, permissions, or release scope. The next step is an Intent-phase stakeholder interview. Distinguish confirmed requirements, assumptions, and open questions.
+The six-phase stakeholder interview is complete; see `intent/delivery-management.md` for the draft PRD. Do not invent requirements or treat open questions and architectural recommendations as approved decisions. Distinguish confirmed requirements, assumptions, and open questions.
 
 ## Technology Stack
 
-Use Python, FastAPI, Pydantic, PostgreSQL, Alembic for migrations, and Pytest for testing. Expose a REST API. Versions, dependency management, and synchronous versus asynchronous database access remain undecided. Avoid unnecessary dependencies or architectural patterns.
+Use Python, FastAPI, Pydantic, PostgreSQL, Alembic for migrations, and Pytest for testing. Expose a REST API. The selected frontend is Next.js, supporting Arabic and English. SQLAlchemy was initially selected but is absent from this file's prior stack; resolve its inclusion before setup. Versions, dependency management, and synchronous versus asynchronous database access remain undecided. Avoid unnecessary dependencies or architectural patterns.
 
 ## Architecture Principles
 

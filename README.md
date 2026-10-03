@@ -1,40 +1,38 @@
-﻿# Delivery Order Management SaaS
+﻿# Delivery Order Management
 
-## Confirmed Context
+## Project Context
 
-A multi-tenant SaaS platform for delivery companies to receive, manage, assign, track, and complete customer delivery orders. This repository is for the backend, designed and implemented by the user.
+A responsive web system for one delivery company to receive, assign, track, and complete delivery requests. Customers, drivers, and company staff use the system. The company delivers items and does not sell them.
 
-## Current Stage
+The target is a working demonstration within five weeks, built by a solo developer with AI assistance. Multi-tenancy is outside the current scope.
 
-Planning and requirements analysis only. Application implementation has not started and is not authorized at this stage. Business requirements are not finalized.
+## Requirements and Current Stage
 
-The next step is an Intent-phase stakeholder interview to discover actual business needs. Earlier proposed roles, order states, permission rules, and release boundaries were unconfirmed suggestions and are not requirements.
+The six-phase stakeholder interview is complete. See the [draft PRD](intent/delivery-management.md) for confirmed requirements, user stories, Gherkin acceptance criteria, architectural recommendations, and open questions.
 
-## Initial Technology Stack
+Work remains in planning. Implementation is not yet authorized. Recommendations and unresolved business rules require review before adoption.
 
-- Python and FastAPI for a REST API.
-- Pydantic for request and response validation.
-- SQLAlchemy and PostgreSQL for persistence.
-- Alembic for database migrations.
-- Pytest for testing.
+## Selected Technologies
 
-Versions and tooling configuration remain undecided. No installation, development, migration, or test commands are configured yet.
+- Next.js for Arabic and English responsive web interfaces.
+- Python, FastAPI, and Pydantic for the REST API.
+- PostgreSQL, Alembic migrations, and Pytest.
+- SQLAlchemy was initially selected but omitted from the later AGENTS.md stack; confirm its inclusion before setup.
 
-## Engineering Direction
+Versions, dependency management, and database access mode remain undecided. No application or development commands are configured.
 
-Keep routes thin, place application/business logic in services, and encapsulate model behavior where appropriate. Separate database access from HTTP concerns. Use FastAPI dependency injection where appropriate and prefer clear, modular code without unnecessary dependencies or patterns. See [AGENTS.md](AGENTS.md) for contributor instructions.
+## Demo Scope
 
-## Open Questions for Discovery
+- Phone-number and password sign-in; real email verification and password recovery.
+- Customer registration and staff approval of verified driver accounts.
+- Text-address delivery requests and company-defined distance-band fees selected by staff.
+- First-driver-to-claim assignment and staff intervention after 15 unclaimed minutes.
+- Driver progress updates, completion, and issue reporting for reassignment.
+- Simulated payments; Jawwal Pay is the intended future live integration.
+- Online operation with approximately 20–30 concurrent drivers and automatic dashboard updates within two seconds under normal conditions.
 
-- Who uses the system, and what operations does each user need?
-- How are orders received, assigned, tracked, and completed in practice?
-- Which data, business rules, and exceptional cases must be supported?
-- What does multi-tenancy mean for company boundaries and access?
-- What defines the first release and its acceptance criteria?
-- Which integrations and operational constraints are required?
+See the PRD for limitations and unresolved behavior. Live payments, offline synchronization, native mobile apps, multi-tenancy, and SMS verification are deferred. Ratings remain unconfirmed.
 
-These questions do not prescribe answers or features. Major architectural decisions will be presented for review before adoption.
+## Engineering Guidance
 
-## Repository Status
-
-`app/` and `test/` are currently empty directories. Treat them as placeholders, not a finalized module structure. No application code or dependency configuration has been added.
+Follow [AGENTS.md](AGENTS.md): thin routes, service-layer business logic, appropriate model behavior, Pydantic validation, dependency injection, and database access separated from HTTP concerns. Major architectural proposals must be presented before adoption.
